@@ -8,12 +8,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" href="../style.css" />
 		<title>登録完了</title>
-	<style type="text/css">
-		body {
-			font-size: 60%;
-		}
-
-	</style>
 	</head>
 	<body id="fsz">
 		<div id="wrap">

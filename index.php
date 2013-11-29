@@ -15,19 +15,21 @@
 		if ($_POST['password'] == '') {
 			$error['password'] = 'blank';
 		}
-		$fileName = $_FILES['image']['name'];
+		$fileName = $_FILES['image']['name'];	//ユーザーが指定したファイル名
 		if (!empty($fileName)) {
-			$ext = substr($fileName,-3);
-			if ($ext != 'jpg' && $ext != 'gif' && $ext != 'png'){
+			$ext = substr($fileName,-3);	//拡張子だけ取り出す　後ろから3文字
+			if ($ext != 'jpg' && $ext != 'gif' && $ext != 'png'){	//拡張子をチェック　指定拡張でなければ$error['image']に'type'を代入
 				$error['image'] = 'type';
 			}
 		}
-		if (empty($error)) {
+		if (empty($error)) {	//どこにもerrorが無ければ
 			//画像をアップロードする
-			$image = date('YmdHis').$FILES['image']['name'];
-			move_uploaded_file($FILES['image']['tmp_name'],'../member_picture/'.$image);
+			$image = date('YmdHis').$_FILES['image']['name'];	//日付を呼び出しファイル名をくっつける=$image
+			// exit($image);
+			move_uploaded_file($_FILES['image']['tmp_name'],'../member_picture/'.$image);	//作成したファイルをmember_pictureに移動する
+
 			$_SESSION['join'] = $_POST;
-			$_SESSION['join']['image'] = $image;
+			$_SESSION['join']['image'] = $image;	//$_SESSIONにファイル名(['image'])を追加する
 			header('Location:check.php');
 			exit();
 		}
@@ -43,7 +45,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
 		<title>会員登録</title>
 	</head>
 	<body id="fsz">
@@ -54,7 +56,7 @@
 
 			<div id="content">
 				<p>次のフォームに必要事項を記入してください。</p>
-				<form action="" method="post" enctype="mulutipart/form-data">
+				<form action="" method="post" enctype="multipart/form-data">
 					<dl>
 						<dt>ニックネーム<span class="required">必須</span></dt>
 						<dd>
@@ -88,7 +90,7 @@
 							<?php endif; ?>
 							<?php if (!empty($error)): ?>
 							<p class="error">＊指定のファイルタイプではないようです、画像を改めて指定してください。</p>
-						<?php endif; ?>
+							<?php endif; ?>
 						</dd>
 					</dl>
 				<div><input type="submit" value="入力内容を確認する" /></div>
