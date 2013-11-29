@@ -1,4 +1,13 @@
 <?php
+	session_start();
+
+	if (!isset($_SESSION['join'])) {
+		header('Location: index.php');
+		exit();
+	}
+	$name = htmlspecialchars($_SESSION['join']['name'],ENT_QUOTES,'UTF-8');
+	$email = htmlspecialchars($_SESSION['join']['email'],ENT_QUOTES,'UTF-8');
+	$image = htmlspecialchars($_SESSION['join']['image'],ENT_QUOTES,'UTF-8');
 ?>
 
 
@@ -17,17 +26,17 @@
 
 			<div id="content">
 				<p>次のフォームに必要事項を記入してください。</p>
-				<form action="" method="post" enctype="mulutipart/form-data">
-				  <dl>
-					  <dt>ニックネーム</dt>
-					  <dd></dd>
-					  <dt>メールアドレス</dt>
-					  <dd></dd>
-					  <dt>パスワード</dt>
-					  <dd>【表示されません】</dd>
-					  <dt>写真など</dt>
-					  <dd></dd>
 				<form action="" method="post">
+					<dl>
+						<dt>ニックネーム</dt>
+						<dd><?= $name ?></dd>
+						<dt>メールアドレス</dt>
+						<dd><?= $email ?></dd>
+						<dt>パスワード</dt>
+						<dd>【表示されません】</dd>
+						<dt>写真など</dt>
+						<dd>
+							<img src="../member_picture/<?= $image ?>" width="100" height="100" alt="" />
 						</dd>
 					</dl>
 				<div>
