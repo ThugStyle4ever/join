@@ -27,6 +27,7 @@
 					  <dd>【表示されません】</dd>
 					  <dt>写真など</dt>
 					  <dd></dd>
+				<form action="" method="post">
 						</dd>
 					</dl>
 				<div>
