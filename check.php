@@ -15,7 +15,7 @@
 
 	</style>
 	</head>
-	<body>
+	<body id="fsz">
 		<div id="wrap">
 			<div id="head">
 				<h1>会員登録</h1>
