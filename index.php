@@ -35,6 +35,12 @@
 		}
 	}
 
+	//描き直し
+	if ($_GET['action'] == 'rewrie') {
+		$_POST = $_SESSION['join'];
+		$error['reweite'] = true;
+	}
+
 	$name = htmlspecialchars($_POST['name'],ENT_QUOTES,'UTF-8');
 	$email = htmlspecialchars($_POST['email'],ENT_QUOTES,'UTF-8');
 	$pass = htmlspecialchars($_POST['password'],ENT_QUOTES,'UTF-8');

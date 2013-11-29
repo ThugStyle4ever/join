@@ -27,6 +27,7 @@
 					  <dd>【表示されません】</dd>
 					  <dt>写真など</dt>
 					  <dd></dd>
+						</dd>
 					</dl>
 				<div>
 					<a href="index.php?action=rewrite">&laquo;&nbsp;書き直す</a>
