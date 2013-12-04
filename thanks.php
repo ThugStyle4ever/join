@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
 		<title>登録完了</title>
 	</head>
 	<body id="fsz">
@@ -17,7 +17,7 @@
 
 			<div id="content">
 				<p>ユーザー登録が完了しました</p>
-				<p><a href="../">ログインする</a></p>
+				<p><a href="../login.php">ログインする</a></p>
 			</div>
 			<div id="foot">
 				&copy;fakeTwitter&nbsp;2013&nbsp;all rights reserveed

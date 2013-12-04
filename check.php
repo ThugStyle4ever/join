@@ -1,10 +1,27 @@
 <?php
-	session_start();
+session_start();
+require('../dbconnect.php');
 
 	if (!isset($_SESSION['join'])) {
 		header('Location: index.php');
 		exit();
 	}
+
+	if(!empty($_POST)) {
+		//登録処理する
+		$sql = sprintf('INSERT INTO members SET name="%s", email="%s", password="%s", picture="%s", created="%s"',
+			mysql_real_escape_string($_SESSION['join']['name']),
+			mysql_real_escape_string($_SESSION['join']['email']),
+			mysql_real_escape_string(sha1($_SESSION['join']['password'])),
+			mysql_real_escape_string($_SESSION['join']['image']),date('Y-m-d H:i:s')
+			);
+			mysql_query($sql) or die(mysql_errno());
+			unset($_SESSION['join']);
+
+			header('Location: thanks.php');
+			exit();
+	}
+
 	$name = htmlspecialchars($_SESSION['join']['name'],ENT_QUOTES,'UTF-8');
 	$email = htmlspecialchars($_SESSION['join']['email'],ENT_QUOTES,'UTF-8');
 	$image = htmlspecialchars($_SESSION['join']['image'],ENT_QUOTES,'UTF-8');
@@ -27,6 +44,7 @@
 			<div id="content">
 				<p>次のフォームに必要事項を記入してください。</p>
 				<form action="" method="post">
+					<input type="hidden" name="action" value="submit" />
 					<dl>
 						<dt>ニックネーム</dt>
 						<dd><?= $name ?></dd>

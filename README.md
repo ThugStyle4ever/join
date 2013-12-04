@@ -1,5 +1,7 @@
 fakeTwitter
 ===========
-##テスト＆遊びです
+#テス
+githubに慣れるためにがむばってまする
+
 
 PHP+MySQL
